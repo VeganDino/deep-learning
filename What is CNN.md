@@ -136,7 +136,7 @@ Conv2D(3, (2, 2), padding='same', input_shape=(3, 3, 1))
 스마트폰 카메라로 사진을 찍을 떄 필터를 적용해볼 수 있는데, 
 적용되는 필터 수에 따라 다른 사진이 나옴을 알 수 있다. 
 
-< img src='https://user-images.githubusercontent.com/56749776/134947096-7ffec3fb-99be-49b2-86e3-f16129e4c6e0.png' width='80%'>
+<img src='https://user-images.githubusercontent.com/56749776/134947096-7ffec3fb-99be-49b2-86e3-f16129e4c6e0.png' width='80%'>
 
 뒤에서 각 레이어를 레고처럼 쌓아올리기 위해서 약식으로 표현하면 다음과 같다. 
 

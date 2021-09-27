@@ -142,6 +142,6 @@ Conv2D(3, (2, 2), padding='same', input_shape=(3, 3, 1))
 
 <img src='https://user-images.githubusercontent.com/56749776/134947264-4bbaa563-d2aa-4f50-a5cb-099ebbbb3552.png' width='80%'>
 
-- 입력 이미지 사이즈가 3x3이다.
+- 입력 이미지 사이즈가 3x3이다. 
 - 2x2 커널을 가진 필터가 3개고 가중치는 총 12개이다.
 - 출력 이미지 사이즈가 3x3이고 총 3개다. 이는 채널이 3개다라고도 표현한다.

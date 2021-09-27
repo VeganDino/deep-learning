@@ -79,12 +79,12 @@ Dense(4, input_dim=9))
 
 이를 도식화하면 다음과 같다. 
 
-<img src ='https://user-images.githubusercontent.com/56749776/134943666-84f1e6d0-773b-4fe7-9a5f-7547bc152e57.png' width="85%">
+<img src ='https://user-images.githubusercontent.com/56749776/134943666-84f1e6d0-773b-4fe7-9a5f-7547bc152e57.png' width="80%">
 
 가중치(시냅스 강도)는 녹색 블럭으로 표시되어 있다.    
 컨볼루션 레이어에서는 가중치 4개로 구성된 크기가 2x2인 필터를 적용하면 뉴런 상세 구조는 다음과 같다. 
 
-<img src='https://user-images.githubusercontent.com/56749776/134943706-2d835dc8-1209-4778-87eb-0298dbb7a1b3.png' width='85%'>
+<img src='https://user-images.githubusercontent.com/56749776/134943706-2d835dc8-1209-4778-87eb-0298dbb7a1b3.png' width='80%'>
 
 필터가 지역적으로만 적용되어 출력 뉴런에 영향을 미치는 입력 뉴런이 
 제한적이므로 Dense 레이어와 비교했을 때, 가중치가 많이 줄어든 것을 

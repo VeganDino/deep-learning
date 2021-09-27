@@ -4,6 +4,8 @@
 맥스풀링(Max Pooling) 레이어, 플래튼(Flatten) 레이어에 대해서 알아보고자 한다.    
 각 레이어별로 레이어 구성 및 역할에 대해 보자.
 
+<br>
+
 ### Convolution Layer (컨볼루션 레이어)
 
 필터로 특징을 뽑아주는 특징이 있다. 
@@ -64,6 +66,8 @@ image_data_format이 ‘channels_last’인 경우이다. 이를 도식화하면
 1) 하나의 필터로 입력 이미지를 순회하기 때문에 순회할 때 적용되는 가중치는 모두 동일하다. 이를 파라미터 공유라고 부른다. 이는 학습해야할 가중치 수를 현저하게 줄여준다. 
 2) 출력에 영향을 미치는 영역이 지역적으로 제한되어 있다. 그림으로 볼 때 y0에 영향을 미치는 입력은 x0, x1, x3, x4로 한정되어 있다. 예로 코를 볼 때 코 주변만 보고, 눈을 볼 때는 눈 주변만 보면서 학습 및 인식한다.
 
+<br>
+
 ### 가중치의 수
 
 Dense 레이어와 컨볼루션 레이어와 비교하면서 차이점을 알아보자.   
@@ -75,12 +79,12 @@ Dense(4, input_dim=9))
 
 이를 도식화하면 다음과 같다. 
 
-![image](https://user-images.githubusercontent.com/56749776/134943666-84f1e6d0-773b-4fe7-9a5f-7547bc152e57.png)
+<img src ='https://user-images.githubusercontent.com/56749776/134943666-84f1e6d0-773b-4fe7-9a5f-7547bc152e57.png' width="85%">
 
 가중치(시냅스 강도)는 녹색 블럭으로 표시되어 있다.    
 컨볼루션 레이어에서는 가중치 4개로 구성된 크기가 2x2인 필터를 적용하면 뉴런 상세 구조는 다음과 같다. 
 
-![image](https://user-images.githubusercontent.com/56749776/134943706-2d835dc8-1209-4778-87eb-0298dbb7a1b3.png)
+<img src='https://user-images.githubusercontent.com/56749776/134943706-2d835dc8-1209-4778-87eb-0298dbb7a1b3.png' width='85%'>
 
 필터가 지역적으로만 적용되어 출력 뉴런에 영향을 미치는 입력 뉴런이 
 제한적이므로 Dense 레이어와 비교했을 때, 가중치가 많이 줄어든 것을 

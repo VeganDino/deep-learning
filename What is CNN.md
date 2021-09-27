@@ -1,4 +1,4 @@
-### CNN (Convolution Neural Network)
+### **CNN (Convolution Neural Network)**
 
 컨볼루션 신경망 모델에서 주로 사용되는 컨볼루션(Convolution) 레이어, 
 맥스풀링(Max Pooling) 레이어, 플래튼(Flatten) 레이어에 대해서 알아보고자 한다.    
@@ -6,7 +6,7 @@
 
 <br>
 
-### Convolution Layer (컨볼루션 레이어)
+### **Convolution Layer (컨볼루션 레이어)**
 
 필터로 특징을 뽑아주는 특징이 있다. 
 여러가지 컨볼루션 레이어 종유 중 영상 처리에 주로 사용되는
@@ -68,13 +68,13 @@ image_data_format이 ‘channels_last’인 경우이다. 이를 도식화하면
 
 <br>
 
-### 가중치의 수
+### **가중치의 수**
 
 Dense 레이어와 컨볼루션 레이어와 비교하면서 차이점을 알아보자.   
 영상도 결국에는 픽셀의 집합이므로 입력 뉴력이 9개 (3x3)이고, 출력 뉴런이 4개(2x2)인 Dense 레이어로 표현할 수 있다. 
 
 ```python
-Dense(4, input_dim=9))
+Dense(4, input_dim=9)
 ```
 
 이를 도식화하면 다음과 같다. 
@@ -92,3 +92,56 @@ Dense(4, input_dim=9))
 노란색끼리는 모두 동일한 가중치(파라미터 공유)이므로 결국 사용되는 
 가중치는 4개다. 즉 Dense 레이어에서는 36개의 가중치가 사용되었지만, 
 컨볼루션 레이어에서는 필터의 크기인 4개의 가중치만을 사용한다.
+
+<br>
+
+### **경계 처리 방법**
+
+컨볼루션 레이어 설정 옵션에는 ```border_mode```가 있는데, 'vaild'와 'same'으로 설정 할 수 있다.
+
+<img src='https://user-images.githubusercontent.com/56749776/134945663-d0b5d07e-1613-4003-9660-a35b589acc84.png' width='80%'>
+
+‘valid’인 경우에는 입력 이미지 영역에 맞게 필터를 적용하기 때문에 
+출력 이미지 크기가 입력 이미지 크기보다 작아진다. 반면에 ‘same’은 
+출력 이미지와 입력 이미지 사이즈가 동일하도록 입력 이미지 경계에 
+빈 영역을 추가하여 필터를 적용한다. ‘same’으로 설정 시, 입력 이미지에 
+경계를 학습시키는 효과가 있다.
+
+<br>
+
+### **필터 수**
+
+입력 이미지가 단채널의 3x3이고, 2x2인 필터가 하나 있다면 다음과 
+같이 컨볼루션 레이어를 정의할 수 있다. 
+
+```python
+Conv2D(1, (2, 2), padding='same', input_shape=(3, 3, 1))
+```
+
+<img src='https://user-images.githubusercontent.com/56749776/134946120-a0eb8543-3bcb-4e9c-8464-81f8df5fe159.png' width='80%'>
+
+만약 여기서 사이즈가  2x2 필터를 3개 사용한다면 다음과 같이 정의할 수 있다.
+
+```python
+Conv2D(3, (2, 2), padding='same', input_shape=(3, 3, 1))
+```
+
+<img src='https://user-images.githubusercontent.com/56749776/134946530-2f500ad0-e58c-465c-a8ad-8d8ccd148057.png' width='80%'>
+
+필터가 3개라서 출력 이미지도 필터 수에 따라 3개로 늘어났다.
+총 가중치의 수는 3 x 2 x 2으로 12개이다. 
+필터마다 고유한 특징을 뽑아 고유한 출력 이미지로 만들기 때문에 
+필터의 출력값을 더해서 하나의 이미지로 만들거나 그렇게 하지 않는다.
+간단히 카메라 필터라고 생각하면 된다.
+스마트폰 카메라로 사진을 찍을 떄 필터를 적용해볼 수 있는데, 
+적용되는 필터 수에 따라 다른 사진이 나옴을 알 수 있다. 
+
+< img src='https://user-images.githubusercontent.com/56749776/134947096-7ffec3fb-99be-49b2-86e3-f16129e4c6e0.png' width='80%'>
+
+뒤에서 각 레이어를 레고처럼 쌓아올리기 위해서 약식으로 표현하면 다음과 같다. 
+
+<img src='https://user-images.githubusercontent.com/56749776/134947264-4bbaa563-d2aa-4f50-a5cb-099ebbbb3552.png' width='80%'>
+
+- 입력 이미지 사이즈가 3x3이다.
+- 2x2 커널을 가진 필터가 3개고 가중치는 총 12개이다.
+- 출력 이미지 사이즈가 3x3이고 총 3개다. 이는 채널이 3개다라고도 표현한다.
